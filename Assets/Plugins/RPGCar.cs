@@ -90,17 +90,17 @@ public class RPGCar : MonoBehaviour
 	}
 	public void MoveRight()
 	{
-		//rb.AddForce(transform.right * thrust);
-		m_WheelColliders[0].steerAngle = turnSpeed;
+		rb.AddForce(transform.right * thrust);
+		/*m_WheelColliders[0].steerAngle = turnSpeed;
 		m_WheelColliders[1].steerAngle = turnSpeed;
-		rb.MovePosition(transform.position + transform.right * Time.deltaTime);
+		rb.MovePosition(transform.position + transform.right * Time.deltaTime);*/
 	}
 	public void MoveLeft()
 	{
-		//rb.AddForce(-transform.right * thrust);
-		m_WheelColliders[0].steerAngle = -1 * turnSpeed;
+		rb.AddForce(-transform.right * thrust);
+		/*m_WheelColliders[0].steerAngle = -1 * turnSpeed;
 		m_WheelColliders[1].steerAngle = -1 * turnSpeed;
-		rb.MovePosition(transform.position + -transform.right * Time.deltaTime);
+		rb.MovePosition(transform.position + -transform.right * Time.deltaTime);*/
 	}
 	public void Break()
 	{
