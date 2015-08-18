@@ -21,9 +21,10 @@ public class LoadingScreen : MonoBehaviour {
 	
     IEnumerator Loada() 
 	{
-		//Debug.Log("cor loop");
+		//
         AsyncOperation async = Application.LoadLevelAsync(Levelname);
 		loopy.fillAmount = async.progress;
+		Debug.Log(async.progress);
         yield return async;
         //Debug.Log("Loading complete");
     }
