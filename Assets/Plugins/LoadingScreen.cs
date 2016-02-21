@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class LoadingScreen : MonoBehaviour {
 	public string Levelname = "MainMenu";
 	public Image loopy;
-	
+	public static AsyncOperation async;
 	public void Awake()
 	{
 		//Debug.Log("start loading screen");
@@ -14,18 +14,21 @@ public class LoadingScreen : MonoBehaviour {
 		{
 			Levelname = "MainMenu";
 		}
-		
+		Debug.Log("strt cor");
 		StartCoroutine(Loada());
-		//Debug.Log("end cor");
+		async.allowSceneActivation = true;
 	}
 	
-    IEnumerator Loada() 
+    IEnumerator Loada()
 	{
-		//
-        AsyncOperation async = Application.LoadLevelAsync(Levelname);
-		loopy.fillAmount = async.progress;
+		
+		async = Application.LoadLevelAsync(Levelname);
+		async.allowSceneActivation = false;
+		
+        loopy.fillAmount = async.progress;
 		Debug.Log(async.progress);
-        yield return async;
-        //Debug.Log("Loading complete");
+		
+		yield return async;
+		
     }
 }

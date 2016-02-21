@@ -9,6 +9,8 @@ using System.Collections;
 
 public class RPGCar : MonoBehaviour 
 {
+	//trigger to race, set to false for garage and shop
+	public bool vRacing = true;
 	Rigidbody rb;
 	//reference to empty gameobject to orient rotation on
 	public Transform vReference;
@@ -48,6 +50,8 @@ public class RPGCar : MonoBehaviour
 			//Debug.Log("ye");
 		}
 		
+		if(vRacing)
+		{
 		SelfRight();
 		
 		if(transform.position.z < TargetY-Deviation)
@@ -66,6 +70,7 @@ public class RPGCar : MonoBehaviour
 		{
 			MoveLeft();
 		}
+		}
 	}
 	public void SelfRight()
 	{
@@ -80,10 +85,13 @@ public class RPGCar : MonoBehaviour
 		if(b > -SpaceY && b < SpaceY)
 		{TargetY = b;}
 	}
+	
 	public void Accelerate()
 	{
 		rb.AddForce(transform.forward * thrust);
 	}
+	
+	
 	public void Brake()
 	{
 		rb.AddForce(-transform.forward * thrust);
